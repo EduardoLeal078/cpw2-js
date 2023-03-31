@@ -12,8 +12,9 @@ function invert(people){
     // todos os nomes digitados, porém de maneira invertida (do último para o primeiro).
     // Uma dica, você pode utilizar a função prompt para permitir que o usuário digite os
     // nomes dos usuários.
-
-    return [];
+    people.reverse();
+    console.log(people);
+    return people;
 }
 
 /**
@@ -28,8 +29,13 @@ function mean(grades){
     // 2) Faça um programa que leia o nome e as três notas de uma disciplina de um aluno e ao final escreva
     // o nome do aluno, sua média e se ele foi aprovado, sabendo-se que a média para aprovação é igual
     // ou superior a 7.
-
-    return 0;
+    let sum = 0;
+    let med = 0;
+    for (let i = 0; i < grades.length; i++) {
+        sum += grades[i];
+    }
+    med = sum / grades.length;
+    return med;
 }
 
 /**
@@ -44,8 +50,11 @@ function isApproved(mean){
     // 2.1) Faça um programa que leia o nome e as três notas de uma disciplina de um aluno e ao final escreva
     // o nome do aluno, sua média e se ele foi aprovado, sabendo-se que a média para aprovação é igual
     // ou superior a 7.
-
-    return "";
+    if(mean >= 7){
+        return "aprovado";
+    }else{
+        return "reprovado";
+    }
 }
 
 /**
@@ -61,8 +70,18 @@ function wide(strDate){
     // por exemplo, de "03/03/2022" para "03 de março de 2022". Dica: use a função
     // “split” de uma string que quebra a string em pedaços dado um separador como argumento da função.
     // Nesse caso, o separador é a barra (/) da data.
+    if(!strDate){
+        return "";
+    }
+    const dateFor = /^\d{2}\/\d{2}\//;
+    if (!dateFor.test(strDate)) {
+        return "";
+    }
+    const [d, m, a] = strDate.split('/');
+    const mes = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+    const nomeMes = mes[parseInt(m) - 1];
 
-    return "";
+    return `${d} de ${nomeMes} de ${a}`;
 }
 
 // Trecho utilizado pelos testes
